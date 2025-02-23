@@ -33,16 +33,16 @@ namespace Slots
             }
             Console.Write("plase your bets:");
 
-            int totalMoney = 100;
+            int startmoney = 100;
 
-            while (totalMoney > 0)
+            while (startmoney > 0)
             {
-                Console.WriteLine($"your current balance: {totalMoney} euros");
+                Console.WriteLine($"your current balance: {startmoney} euros");
                 Console.Write("place your bet: ");
                 int bet = int.Parse(Console.ReadLine());
 
 
-                if (bet > totalMoney)
+                if (bet > startmoney)
                 {
                     Console.WriteLine("you don't have enough money bet less");
                     continue;
@@ -62,38 +62,65 @@ namespace Slots
                 sim3 = roll3 == 1 ? "🍒" : roll3 == 2 ? "🍋" : "🍉";
 
 
-                Console.WriteLine($"Rolled: {sim1} {sim2} {sim3}");
+                Console.WriteLine($"rolled: {sim1} {sim2} {sim3}");
 
 
                 if (sim1 == sim2 && sim2 == sim3)
                 {
 
-                    totalMoney += bet;
-                    Console.WriteLine($"Congratulations! You won {bet * 2 + bet} euros. Your new balance is {totalMoney} euros.");
+                    startmoney += bet;
+                    Console.WriteLine($"Congratulations You won {bet * 2 } euros your new balance is {startmoney + bet} euros.");
                 }
                 else
                 {
 
-                    totalMoney -= bet;
-                    Console.WriteLine($"Sorry! You lost your bet. Your new balance is {totalMoney} euros.");
+                    startmoney -= bet;
+                    Console.WriteLine($"sorry you lost your bet your new balance is {startmoney} euros.");
                 }
 
 
-                if (totalMoney <= 0)
+                if (startmoney <= 0)
                 {
-                    Console.WriteLine("Game over! You ran out of money.");
+                    Console.WriteLine("game over you ran out of money.");
                     break;
                 }
-
-                Console.WriteLine("Do you want to play again? (yes/no)");
-                string playagain = Console.ReadLine();
-                if (playagain.ToLower() == "no")
+               
+                
+                    Console.WriteLine("do you want to play again? (yes/no)");
+                    string playagain = Console.ReadLine();
+                if (playagain.ToLower() == "yes")
                 {
-                    break;
+                    continue;
                 }
 
+                else if (playagain.ToLower() == "no")
+                {
+                    break;
+
+                }
+
+                else 
+                {
+                    while (true) 
+                    {
 
 
+                        Console.WriteLine("do you want to play again? (yes/no)");
+                        string play = Console.ReadLine();
+                        if (play.ToLower() == "yes")
+                        {
+                           break;
+                        }
+
+                        else if (play.ToLower() == "no")
+                        {
+                            break;
+
+                        }
+
+                    }
+                }
+                   
             }
 
 
